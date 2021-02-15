@@ -4,11 +4,18 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "test": "ava --verbose",
-    "prettify": "prettier --write **/*.ts"
+    "test": "cross-env NODE_ENV=test ava --verbose",
+    "prettify": "prettier --write **/*.ts",
+    "local": "cross-env NODE_ENV=development serverless offline"
+  },
+  "ava": {
+   "files": ["./src/tests/ava/**/*.ts"],
+   "extensions": ["ts"],
+   "require": ["ts-node/register"]
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {
